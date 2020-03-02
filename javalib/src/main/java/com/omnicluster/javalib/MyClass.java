@@ -8,67 +8,6 @@ import java.util.Scanner;
  * */
 public class MyClass {
 
-    // Array of items on which search will
-    // be conducted.
-    /* private static int[] arr = new int[]{10, 12, 13, 16, 18, 19, 20, 21, 22, 23,
-            24, 33, 35, 42, 47};
-
-    private static int interpolationSearch(int[] data, int item) {
-
-        int highEnd = (data.length - 1);
-        int lowEnd = 0;
-
-        while (item >= data[lowEnd] && item <= data[highEnd] && lowEnd <= highEnd) {
-
-            int probe
-                    = lowEnd + (highEnd - lowEnd) * (item - data[lowEnd]) / (data[highEnd] - data[lowEnd]);
-
-            if (highEnd == lowEnd) {
-                if (data[lowEnd] == item) {
-                    return lowEnd;
-                } else {
-                    return -1;
-                }
-            }
-
-            if (data[probe] == item) {
-                return probe;
-            }
-
-            if (data[probe] < item) {
-                lowEnd = probe + 1;
-            } else {
-                highEnd = probe - 1;
-            }
-        }
-        return -1;
-    }
-
-    public static void insertionSort(int[] array) {
-        for (int i = 1; i < array.length; i++) {
-            int current = array[i];
-            int j = i - 1;
-            while(j >= 0 && current < array[j]) {
-                array[j+1] = array[j];
-                j--;
-            }
-            // at this point we've exited, so j is either -1
-            // or it's at the first element where current >= a[j]
-            array[j+1] = current;
-        }
-    }
-
-    public static void main(String[] arg) {
-        int x = 16; // Element to be searched
-        int index = interpolationSearch(arr, x);
-
-        // If element was found
-        if (index != -1)
-            System.out.println("Element found at index " + index);
-        else
-            System.out.println("Element not found.");
-    }*/
-
     /**
      * Método para ordenar un array usando el método de inserción
      *
@@ -138,13 +77,13 @@ public class MyClass {
     }
 
     /**
-     * Función de ayuda para imprimir un array de enteros
+     * Función de ayuda para imprimir un array de Strings
      *
      * @param arr arreglo de String
      */
     private static void printArray(String[] arr) {
         System.out.println("Tu arreglo ordenado es: \n");
-        for (String s : arr) System.out.print(s + " ");
+        for (String s : arr) System.out.print(s + ", ");
         System.out.println();
     }
 
@@ -156,14 +95,13 @@ public class MyClass {
     private static void menu(Scanner scanner) {
         MyClass ob = new MyClass();
         System.out.println(
-                "Presione i para ordenar un array de enteros, "
-                        + "l para ordenar un array de Strings "
-                        + "o presione s para salir");
-        String selection = scanner.nextLine();
+                "Presione 1 para ordenar un array de enteros, "
+                        + "2 para ordenar un array de Strings "
+                        + "o presione 3 para salir");
+        int selection = scanner.nextInt();
 
         switch (selection) {
-            case "i":
-            case "I":
+            case 1:
                 {
                     try {
                         System.out.println("Ingrese el total de elementos del array");
@@ -187,8 +125,7 @@ public class MyClass {
                     menu(scanner);
                     break;
                 }
-            case "l":
-            case "L":
+            case 2:
                 {
                     System.out.println("Ingrese el total de elementos del array");
                     try {
@@ -197,7 +134,7 @@ public class MyClass {
                             System.out.println("Ingrese los valores del array");
                             String[] userArray = new String[n];
                             for (int i = 0; i < n; i++) {
-                                userArray[i] = scanner.nextLine();
+                                userArray[i] = scanner.next();
                             }
                             ob.insertionSort(userArray);
                             printArray(userArray);
@@ -211,8 +148,7 @@ public class MyClass {
                     menu(scanner);
                     break;
                 }
-            case "s":
-            case "S":
+            case 3:
                 System.out.println("Adios");
                 break;
             default:
